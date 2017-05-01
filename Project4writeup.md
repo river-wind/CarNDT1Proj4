@@ -131,7 +131,7 @@ Lastly, I added text to the image's top left corner, displaying the curvature an
 
 #### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (wobbly lines are ok but no catastrophic failures that would cause the car to drive off the road!).
 
-Only then did I have all the pieces I needed to build an actual pipeline.  This block of code, named find_lane() and found under the comment/heading "Organize the above into a single function" takes in a single color image, undistort it, processes it to produce binary output, performs a perspective warp on that image, uses slidingindowsearch() to identify lane lines, calculates the lane curve and center, then overlays the lane area onto the original image along with the measured curve and position values.
+Only then did I have all the pieces I needed to build an actual pipeline.  This block of code, named find_lane() and found under the comment/heading "Organize the above into a single function" takes in a single color image, undistorts it, processes it to produce binary output, performs a perspective warp on it, uses slidingindowsearch() to identify lane lines, calculates the lane curve and center, then overlays the lane area onto the original image, along with the measured curve and position values.
 
 After testing this on a few test images, I applied it to the project video.
 
@@ -139,7 +139,7 @@ Here's a [link to my video result](./project_video_with_lane.mp4)
 
 I also applied the process to the challenge_video.mp4 file, with results displayed in the third from final cell in the notebook.  The performance on this challenge video were better than my initial attempts, particularly when the HOV lane contained two colors of cement, but was still sub-par.  During the shadow under the bridge, and for a while after, the process failed almost completely.  I would like to have more time to continue working on the pipeline, but there is much left to cover in this Term, and not many days to cover it!
 
-Finally, I also tested the harder_challenge_video.mp4 file, with little expectation that the output would be effective.  The result was
+Finally, I also tested the harder_challenge_video.mp4 file, with little expectation that the output would be effective.  The result ranged from suprisingly passible to dangerously terrible, mostly due to the process' inability to detect the right-hand lane line.  This was suprising to me, given that it appeared obvious.  Instead the job tended to favor the edge of the grass just beyond the right lane line instead of the line itself.  During a very strong right hand corner, the predictions turned into a spagetti mess as the camera lost sight of the right lane line, and the left lane line existed as a curved diagonal nearly horizontal across the screen.
 
 ---
 
@@ -156,3 +156,5 @@ Similarly, I had ideas of how we might improve lane finding and curvature calcul
 What I do feel is nearly magic is the sliding window search process.  While I have read the code and the descriptions provided, I'm still flummoxed by the details of how this function actually works; I will continue studying it in order to improve my understanding as we approach the car identification project.
 
 Merging the Behavioral Cloning process with this process would be an interesting one.  If we could teach a neural network not just to clone behavior, but to clone object identification behavior, we could start to generate a rudimentary conceptualization within an A.I.  In addition to rote learning ("when o your this, turn this far that way"), we could also begin to train an A.I. to identify things within the images it processes, and use modern-day decision trees to "think ahead", and plan expectations of future states based on what those objects are most likely to do.
+
+Handling the extremly strong curve of the harder challenge video will require altering the assuming that the lines we are looking for will be vertical, and would benefit from more heavily weighting prior lane identification from the past few frames of video to predict where the line is likely to be next.  By following the left line as it curves further and further right, the process will be less likely to lose it completely.
