@@ -16,7 +16,7 @@ The goals / steps of this project were the following:
 [//]: # (Image References)
 
 [image1]: ./examples/chessboard.png "Undistorted"
-[image2]: ./examples/undistorted.jpg "Road Transformed"
+[image2]: ./examples/undistorted.png "Road Transformed"
 [image3]: ./examples/binary_combo_examples.png "Binary Example"
 [image4]: ./examples/warpExample.png "Warp Example"
 [image5]: ./examples/FitLines.png "Fit Visual"
@@ -135,7 +135,7 @@ Only then did I have all the pieces I needed to build an actual pipeline.  This 
 
 After testing this on a few test images, I applied it to the project video.
 
-Here's a [link to my video result](./project_video_result.mp4)
+Here's a [link to my video result](./project_video_with_lane.mp4)
 
 I also applied the process to the challenge_video.mp4 file, with results displayed in the third from final cell in the notebook.  The performance on this challenge video were better than my initial attempts, particularly when the HOV lane contained two colors of cement, but was still sub-par.  During the shadow under the bridge, and for a while after, the process failed almost completely.  I would like to have more time to continue working on the pipeline, but there is much left to cover in this Term, and not many days to cover it!
 
