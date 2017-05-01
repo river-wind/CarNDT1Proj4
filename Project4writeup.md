@@ -20,7 +20,7 @@ The goals / steps of this project were the following:
 [image3]: ./examples/binary_combo_examples.png "Binary Example"
 [image4]: ./examples/warpExample.png "Warp Example"
 [image5]: ./examples/FitLines.png "Fit Visual"
-[image6]: ./examples/finaloutput.png "Output"
+[image6]: ./examples/FinalOutput.png "Output"
 [video1]: ./project_video_with_lane.mp4 "Video"
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/571/view) Points
