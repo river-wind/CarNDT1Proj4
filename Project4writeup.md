@@ -27,6 +27,14 @@ The goals / steps of this project were the following:
 
 ### The rubric points are addressed below individually; I describe how I addressed each point in my implementation for each point.
 
+Because the initial submited was rejected due to some frames of the video with failed lane drawing, I have also added the following items:
+
+1) Added HSV thresholding along with full image and HSL thresholding for white and yellow specifically, and combined that with limited sobel and red channel thresholds to get better initial lane identification.  See processimage().
+
+2) Added, and later removed, polygon shape comparison between current and prior frames with cv2.matchshape().  While this handled some outliers, it had a tendency to get stuck if a bad prediction went on for more than two frames.
+
+3) Replaced the cv2.matchchape() with an array tracking the prior 10 frames x fit polynomial lines.  If the left and right xfit arrays varied too widely from the prior 10 frames, I would not include that prediction.  Actual lane findnig was then based on the mean of either the mean of the current frame and the prior 9, or the mean of the prior 10.  See slidingwindowsearch().
+
 ---
 
 ### Writeup / README
